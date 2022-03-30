@@ -1,13 +1,21 @@
 """Type, Comprensión de Listas, Sorted y Filter."""
 
 from typing import List, Union
+from xml.etree.ElementTree import ElementTree
 
 
 def numeros_al_final_basico(lista: List[Union[float, str]]) -> List[Union[float, str]]:
     """Toma una lista de enteros y strings y devuelve una lista con todos los
     elementos numéricos al final.
     """
-    pass # Completar
+    listaNumeros = []
+    listaStr = []
+    for elemento in lista:
+        if type(elemento) == str:
+            listaStr.append(elemento)
+        else:
+            listaNumeros.append(elemento)
+    return listaStr + listaNumeros
 
 
 # NO MODIFICAR - INICIO
@@ -20,7 +28,9 @@ assert numeros_al_final_basico([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 
 
 def numeros_al_final_comprension(lista: List[Union[float, str]]) -> List[Union[float, str]]:
     """Re-escribir utilizando comprensión de listas."""
-    pass # Completar
+    listaNumeros = [x for x in lista if type(x) == int]
+    listaStr = [x for x in lista if type(x) == str]
+    return listaStr + listaNumeros
 
 
 # NO MODIFICAR - INICIO
@@ -35,7 +45,7 @@ def numeros_al_final_sorted(lista: List[Union[float, str]]) -> List[Union[float,
     """Re-escribir utilizando la función sorted con una custom key.
     Referencia: https://docs.python.org/3/library/functions.html#sorted
     """
-    pass # Completar
+    return sorted(lista, key=)
 
 
 # NO MODIFICAR - INICIO
