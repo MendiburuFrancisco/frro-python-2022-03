@@ -1,5 +1,6 @@
 """Type, Comprensión de Listas, Sorted y Filter."""
 
+import functools
 from typing import List, Union
 from xml.etree.ElementTree import ElementTree
 
@@ -45,7 +46,15 @@ def numeros_al_final_sorted(lista: List[Union[float, str]]) -> List[Union[float,
     """Re-escribir utilizando la función sorted con una custom key.
     Referencia: https://docs.python.org/3/library/functions.html#sorted
     """
-    return sorted(lista, key=)
+    def funcion_comparativa(a, b):
+        if type(a) == type(b):
+            return 0
+        elif type(a) == int and type(b) == str:
+            return 1
+        else:
+            return -1
+
+    return sorted(lista, key=functools.cmp_to_key(funcion_comparativa))
 
 
 # NO MODIFICAR - INICIO
@@ -60,7 +69,9 @@ def numeros_al_final_filter(lista: List[Union[float, str]]) -> List[Union[float,
     """CHALLENGE OPCIONAL - Re-escribir utilizando la función filter.
     Referencia: https://docs.python.org/3/library/functions.html#filter
     """
-    pass # Completar
+    listaNumeros = list(filter(lambda x: type(x)==int, lista))
+    listaString = list(filter(lambda x: type(x)==str, lista))
+    return listaString + listaNumeros
 
 
 # NO MODIFICAR - INICIO
