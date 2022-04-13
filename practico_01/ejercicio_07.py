@@ -1,5 +1,5 @@
 """Slicing."""
-
+import math
 
 def es_palindromo(palabra: str) -> bool:
     """Toma un string y devuelve un booleano en base a si se lee igual al
@@ -8,6 +8,17 @@ def es_palindromo(palabra: str) -> bool:
     Restricción: No utilizar bucles - Usar Slices de listas.
     Referencia: https://docs.python.org/3/tutorial/introduction.html#lists
     """
+    if len(palabra) > 1:
+        aux = round(len(palabra) / 2)
+        pal = palabra[:aux]
+        bra = palabra[::-1]
+        bra = bra[:aux]
+        if pal == bra:
+            return True
+        else:
+            return False
+    else:
+        return True
     pass # Completar
 
 
@@ -28,6 +39,12 @@ def mitad(palabra: str) -> str:
     Restricción: No utilizar bucles - Usar Slices de listas.
     Referencia: https://docs.python.org/3/tutorial/introduction.html#lists
     """
+    if len(palabra) > 1:
+        aux = math.ceil(len(palabra) / 2)
+        pal = palabra[:aux]
+        return pal
+    else:
+        return palabra
     pass # Completar
 
 
