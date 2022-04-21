@@ -49,7 +49,7 @@ def tiene_pares_any(numeros: Iterable[int]) -> bool:
     """Re-Escribir utilizando la función any, sin utilizar bucles.
     Referencia: https://docs.python.org/3/library/functions.html#any
     """
-    pass # Completar
+    return any(True if x % 2 == 0 else False for x in numeros) 
 
 
 # NO MODIFICAR - INICIO

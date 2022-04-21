@@ -46,16 +46,14 @@ def numeros_al_final_sorted(lista: List[Union[float, str]]) -> List[Union[float,
     """Re-escribir utilizando la función sorted con una custom key.
     Referencia: https://docs.python.org/3/library/functions.html#sorted
     """
-    def funcion_comparativa(a, b):
-        if type(a) == type(b):
-            return 0
-        elif type(a) == int and type(b) == str:
-            return 1
-        else:
-            return -1
-
-    return sorted(lista, key=functools.cmp_to_key(funcion_comparativa))
-
+    #def funcion_comparativa(a, b):
+    #    if type(a) == type(b):
+    #        return 0
+    #    elif type(a) == int and type(b) == str:
+    #        return 1
+    #    else:
+    #        return -1
+    return sorted(lista, key = lambda x: type(x) != str)
 
 # NO MODIFICAR - INICIO
 assert numeros_al_final_sorted([3, "a", 1, "b", 10, "j"]) == ["a", "b", "j", 3, 1, 10]
@@ -85,7 +83,14 @@ if __name__ == "__main__":
 
 def numeros_al_final_recursivo(lista: List[Union[float, str]]) -> List[Union[float, str]]:
     """CHALLENGE OPCIONAL - Re-escribir de forma recursiva."""
-    pass # Completar
+    if all(type(i) != str for i in lista) or all(type(i) == str for i in lista):
+        return lista
+    a, *b = lista
+    if type(a) != str:
+        b.append(a)
+        return numeros_al_final_recursivo(b)
+    return [a] + numeros_al_final_recursivo(b)
+    
 
 
 # NO MODIFICAR - INICIO
