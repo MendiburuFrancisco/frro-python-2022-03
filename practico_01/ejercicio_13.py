@@ -21,7 +21,12 @@ def generar_pares_clousure(initial: int = 0) -> Callable[[], int]:
         - Usar closures
         - Usar el modificador nonlocal
     """
-    pass # Completar
+    numeroGuardado = initial - 2
+    def devolver_siguiente_par():
+        nonlocal numeroGuardado
+        numeroGuardado = numeroGuardado + 2
+        return numeroGuardado
+    return devolver_siguiente_par
 
 
 # NO MODIFICAR - INICIO
@@ -45,8 +50,18 @@ def generar_pares_generator(initial: int = 0) -> Iterator[int]:
     """Re-Escribir utilizando Generadores
     Referencia: https://docs.python.org/3/howto/functional.html?highlight=generator#generators
     """
-    pass # Completar
-
+    numeroGuardado = initial - 2
+    while True:
+        numeroGuardado +=2
+        yield numeroGuardado
+    #numeroGuardado = "asd"
+    #while True:
+    #    if type(numeroGuardado) == str:
+    #        numeroGuardado = initial
+    #    else:
+    #        numeroGuardado += 2
+    #    print(numeroGuardado)
+    #    yield numeroGuardado
 
 # NO MODIFICAR - INICIO
 generador_pares = generar_pares_generator()
