@@ -19,7 +19,12 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
 
     Restricción: Resolver utilizando un bucle for.
     """
-    pass # Completar
+    tuplaFinal = list()
+    for indice in range(len(nombres)):
+        tuplaNueva = (nombres[indice], precios[indice])
+        tuplaFinal.append(tuplaNueva)
+    return tuple(tuplaFinal)
+
 
 
 # NO MODIFICAR - INICIO
@@ -67,7 +72,11 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
     """Re-Escribir utilizando zip.
     Referencia: https://docs.python.org/3/library/functions.html#zip
     """
-    pass # Completar
+    tuplaFinal = list()
+    for nuevaTupla in zip(nombres,precios,ids):
+        tuplaFinal.append(nuevaTupla)
+
+    return tuple(tuplaFinal)
 
 
 # NO MODIFICAR - INICIO
