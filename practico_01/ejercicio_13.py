@@ -76,7 +76,12 @@ assert next(generador_pares) == 4
 
 def generar_pares_generator_send(initial: int = 0) -> Iterator[int]:
     """CHALLENGE OPCIONAL: Re-Escribir utilizando send para saltear numeros"""
-    pass # Completar
+    numeroGuardado = initial - 2
+    while True:  
+        numeroGuardado += 2
+        valor = yield numeroGuardado
+        if valor != None:
+            yield valor
 
 
 # NO MODIFICAR - INICIO
