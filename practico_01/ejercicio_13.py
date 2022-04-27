@@ -52,15 +52,10 @@ def generar_pares_generator(initial: int = 0) -> Iterator[int]:
     Referencia: https://docs.python.org/3/howto/functional.html?highlight=generator#generators
     """
 
-    numeroParInicial = initial - 2
-
-    def generador_pares():
-        nonlocal numeroParInicial
-        print(numeroParInicial)
-        yield numeroParInicial
-        numeroParInicial+=2 
-        
-    return generador_pares
+    numeroPar = initial - 2
+    while True:
+        numeroPar +=2
+        yield numeroPar
 
 
 # NO MODIFICAR - INICIO
