@@ -55,6 +55,12 @@ def medir_tiempo(func: Callable[[], int]) -> Tuple[int, float]:
     Restricción: La función no debe tomar parámetros y por lo tanto se
     recomienda usar partial.
     """
+    start = perf_counter()
+    result = func()
+    tiempo = perf_counter() - start
+    dupla = (result, tiempo)
+    return dupla
+
     pass # Completar
 
 
@@ -73,6 +79,11 @@ def medir_tiempo(func: Callable[[Sequence[int], int], int]) -> Callable[[Sequenc
     partial. En este caso se debe devolver una función que devuelva la tupla y
     tome una cantidad arbitraria de parámetros.
     """
+    for e in func
+        print(e)
+
+    def funcion_auxiliar()
+
     pass # Completar
 
 
