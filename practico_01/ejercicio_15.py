@@ -60,7 +60,6 @@ def medir_tiempo(func: Callable[[], int]) -> Tuple[int, float]:
     tiempo = perf_counter() - start
     dupla = (result, tiempo)
     return dupla
-
     pass # Completar
 
 
@@ -79,11 +78,12 @@ def medir_tiempo(func: Callable[[Sequence[int], int], int]) -> Callable[[Sequenc
     partial. En este caso se debe devolver una función que devuelva la tupla y
     tome una cantidad arbitraria de parámetros.
     """
-    for e in func
-        print(e)
-
-    def funcion_auxiliar()
-
+    def calcular_posibilidades_nueva(lista: Sequence[int], limite: int):
+        start = perf_counter()
+        result = func(lista, limite)
+        tiempo = perf_counter() - start
+        return (result, tiempo)
+    return calcular_posibilidades_nueva
     pass # Completar
 
 
@@ -131,15 +131,16 @@ assert result == 28671512
 resultados de funciones que son muy costosas computacionalmente. A este
 patrón se lo suele denominar memoized
 """
+import functools
 
-
+@functools.lru_cache()
 def memoized(func):
     """Escribir una función memoized y utilizarla como decorador junto con medir_
     tiempo para la función calcular posibilidades. Prestar atención a los tiempo
     de ejecución
     """
+    return func
     pass # Completar
-
 
 @medir_tiempo
 @memoized
