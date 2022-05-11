@@ -16,7 +16,8 @@ class Article:
 
     # NO MODIFICAR - FIN
 
-    # Completar
+    def __str__(self) -> str:
+        return self.name
 
 
 # NO MODIFICAR - INICIO
@@ -49,8 +50,13 @@ class ShoppingCart:
 
     # NO MODIFICAR - FIN
 
-    # Completar
-
+    def __str__(self) -> str:
+        cadena = "["
+        for i in range(len(self.articles)-1):
+            cadena += "'{}', ".format(str(self.articles[i]))
+        cadena += "'{}']".format(str(self.articles[-1]))
+        print(cadena)
+        return cadena
 
 # NO MODIFICAR - INICIO
 

@@ -9,8 +9,17 @@ class Articulo:
         - Utilizar sólamente el constructor (__init__) y un método de
           clase (@classmethod) con una variable de clase
     """
-
-    # Completar
+    _last_id = 0 
+    
+    def __init__(self=None, nombreArticulo=None):
+        self.incrementar_last_id()
+        self.nombre = nombreArticulo
+        self.id_ = self._last_id
+        
+    @classmethod
+    def incrementar_last_id(cls):
+        cls._last_id +=1
+        return cls._last_id
 
 
 # NO MODIFICAR - INICIO
