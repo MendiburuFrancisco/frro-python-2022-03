@@ -16,6 +16,14 @@ class Article:
 
     # NO MODIFICAR - FIN
 
+    def __repr__(self):
+        return "'{}'".format(self.name)
+
+    def __eq__(self, other):
+        return repr(self) == repr(other)
+
+    def __ne__(self, other):
+        return not (repr(self) == repr(other))
     # Completar
 
 
@@ -48,6 +56,35 @@ class ShoppingCart:
         return self
 
     # NO MODIFICAR - FIN
+
+    def __str__(self):
+        return str(self.articles)
+
+    def __repr__(self):
+        return str(self.articles)
+
+    def __len__(self):
+        return len(self.articles)
+
+    def __eq__(self, other: List[Article]):
+        b = []
+        if len(self) == len(other) and len(self) > 1:
+            for article in self.articles:
+                #other no es iterable si se manda como ShoppingCart().add(pera).add(tv)
+                #Por eso tuve que ponerlo adentro de estos dos metodos.
+                if article in eval(repr(other)):
+                    b.append(True)
+                else:
+                    b.append(False)
+        elif len(self) == len(other) and len(self) == 1:
+            if self.articles == other:
+                b.append(True)
+
+        return all(b)
+
+    def __add__(self, other):
+        self.add(other)
+        return self
 
     # Completar
 
