@@ -1,13 +1,24 @@
 """Base de Datos SQL - Alta"""
 
 import datetime
-from practico_04.ejercicio_01 import reset_tabla
+from re import A
+from ejercicio_01 import reset_tabla
+import sqlite3
 
 
 def agregar_persona(nombre, nacimiento, dni, altura):
     """Implementar la funcion agregar_persona, que inserte un registro en la 
     tabla Persona y devuelva los datos ingresados el id del nuevo registro."""
-    pass # Completar
+    conn = sqlite3.connect("practico_04.db")
+    cursor = conn.cursor()
+    
+    datos = (nombre, nacimiento, dni, altura)
+    cursor.execute(
+        """INSERT INTO Persona (Nombre, FechaNacimiento, DNI, Altura)
+            VALUES (?, ?, ?, ?)"""
+    ,datos)
+    conn.commit()
+    conn.close()
 
 
 # NO MODIFICAR - INICIO
@@ -19,5 +30,6 @@ def pruebas():
     assert id_marcela > id_juan
 
 if __name__ == '__main__':
+    print(datetime.datetime(1988, 5, 15))
     pruebas()
 # NO MODIFICAR - FIN

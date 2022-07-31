@@ -10,13 +10,31 @@ def crear_tabla():
         - DNI: Int()
         - Altura: Int()
     """
-    pass # Completar
+    conn = sqlite3.connect("practico_04.db")
+    cursor = conn.cursor()
+    cursor.execute(
+        """CREATE TABLE if not exists Persona (
+            IdPersona INT PRIMARY KEY,
+            Nombre VARCHAR(30),
+            FechaNacimiento DATETIME,
+            DNI INT,
+            Altura INT
+        )"""
+    )
+    conn.commit()
+    conn.close()
 
 
 def borrar_tabla():
     """Implementar la funcion borrar_tabla, que borra la tabla creada 
     anteriormente."""
-    pass # Completar
+    conn = sqlite3.connect("practico_04.db")
+    cursor = conn.cursor()
+    cursor.execute(
+        """DROP TABLE if exists Persona"""
+    )
+    conn.commit()
+    conn.close()
 
 
 # NO MODIFICAR - INICIO
@@ -27,3 +45,5 @@ def reset_tabla(func):
         borrar_tabla()
     return func_wrapper
 # NO MODIFICAR - FIN
+
+crear_tabla()
