@@ -14,7 +14,7 @@ def agregar_persona(nombre, nacimiento, dni, altura):
     cur.execute("""INSERT INTO PERSONA(nombre, fechaNacimiento, dni, altura) 
                     VALUES (?,?,?,?)""", (nombre, nacimiento, dni, altura))
     con.commit()
-    cur.close()
+    con.close()
     return cur.lastrowid
     pass # Completar
 

@@ -15,10 +15,10 @@ def borrar_persona(id_persona):
     cur = con.cursor()
     cur.execute("""DELETE FROM PERSONA WHERE PERSONA.IdPersona = ?""", (id_persona,))
     if cur.rowcount > 0:
-        cur.close()
+        con.close()
         return True
     else:
-        cur.close()
+        con.close()
         return False
     pass # Completar
 

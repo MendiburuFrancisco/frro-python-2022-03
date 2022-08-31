@@ -16,11 +16,18 @@ def buscar_persona(id_persona):
     cur = con.cursor()
     cur.execute("""SELECT * FROM PERSONA WHERE PERSONA.IdPersona = ?""", (id_persona,))
     row = cur.fetchall()
-    if row is None:
-        cur.close()
+    if len(row) == 0:
+        con.close()
         return False
     else:
-        print(row)
+        fila = [1, 2, 3, 4, 5]
+        for i in range(5):
+            if i != 2:
+                fila[i] = row[0][i]
+            else:
+                fila[i] = datetime.datetime.strptime(row[0][i], '%Y-%m-%d %H:%M:%S')
+        row = tuple(fila)
+        con.close()
         return row
     pass # https://stackoverflow.com/questions/21829266/how-to-get-the-numbers-of-data-rows-from-sqlite-table-in-python
 

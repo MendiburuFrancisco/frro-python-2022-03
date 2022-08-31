@@ -19,7 +19,7 @@ def crear_tabla():
                             fechaNacimiento date,
                             dni integer, 
                             altura integer)""")
-    cur.close()
+    con.close()
     pass # Completar
 
 def borrar_tabla():
