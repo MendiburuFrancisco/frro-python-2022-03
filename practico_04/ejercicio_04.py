@@ -15,17 +15,13 @@ def buscar_persona(id_persona):
     con = sqlite3.connect('example.db')
     cur = con.cursor()
     cur.execute("""SELECT * FROM PERSONA WHERE PERSONA.IdPersona = ?""", (id_persona,))
-    row = cur.fetchall()
-    if len(row) == 0:
+    row = cur.fetchone()
+    if row is None:
         con.close()
         return False
     else:
-        fila = [1, 2, 3, 4, 5]
-        for i in range(5):
-            if i != 2:
-                fila[i] = row[0][i]
-            else:
-                fila[i] = datetime.datetime.strptime(row[0][i], '%Y-%m-%d %H:%M:%S')
+        fila = list(row)
+        fila[2] = datetime.datetime.strptime(row[2], '%Y-%m-%d %H:%M:%S')
         row = tuple(fila)
         con.close()
         return row
