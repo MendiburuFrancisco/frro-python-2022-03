@@ -6,7 +6,7 @@ from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
 
-class Socio(Base):
+class User(Base):
     """Implementar un modelo Socio a traves de Alchemy que cuente con los siguientes campos:
         - id_socio: entero (clave primaria, auto-incremental, unico)
         - dni: entero (unico)

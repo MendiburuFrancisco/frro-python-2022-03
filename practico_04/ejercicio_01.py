@@ -13,7 +13,7 @@ def crear_tabla():
     con = sqlite3.connect('example.db')
     cur = con.cursor()
 
-    cur.execute("""CREATE TABLE IF NOT EXISTS PERSONA (
+    cur.execute("""CREATE TABLE IF NOT EXISTS Persona (
                             IdPersona integer primary key autoincrement, 
                             nombre text, 
                             fechaNacimiento date,
