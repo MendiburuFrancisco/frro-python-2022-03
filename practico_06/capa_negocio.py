@@ -1,7 +1,7 @@
 # Implementar los metodos de la capa de negocio de socios.
 
-from practico_05.ejercicio_01 import Socio
-from practico_05.ejercicio_02 import DatosSocio
+from ejercicio_01 import Socio
+from ejercicio_02 import DatosSocio
 
 
 class DniRepetido(Exception):
@@ -31,7 +31,7 @@ class NegocioSocio(object):
         Devuelve None si no encuentra nada.
         :rtype: Socio
         """
-        return DatosSocio.buscar(id_socio)
+        return self.datos.buscar(id_socio)
 
     def buscar_dni(self, dni_socio):
         """
@@ -39,7 +39,11 @@ class NegocioSocio(object):
         Devuelve None si no encuentra nada.
         :rtype: Socio
         """
-        return DatosSocio.buscar_dni(dni_socio)
+        buscado = self.datos.buscar_dni(dni_socio)
+        if buscado is None:
+            return None
+        else:
+            return buscado
 
     def todos(self):
         """
@@ -47,7 +51,7 @@ class NegocioSocio(object):
         :rtype: list
         """
         #return []
-        return DatosSocio.todos()
+        return self.datos.todos()
 
     def alta(self, socio):
         """
@@ -62,17 +66,11 @@ class NegocioSocio(object):
             if self.regla_2(socio):
                 if self.regla_3():
                     try:
-                        DatosSocio.alta(socio)
+                        self.datos.alta(socio)
                     except:
                         return False
                     else:
                         return True
-                else:
-                    raise
-            else:
-                raise
-        else:
-            raise
 
     def baja(self, id_socio):
         """
@@ -81,7 +79,7 @@ class NegocioSocio(object):
         :rtype: bool
         """
         try:
-            DatosSocio.baja(id_socio)
+            self.datos.baja(id_socio)
         except:
             return False
         else:
@@ -98,13 +96,14 @@ class NegocioSocio(object):
         """
         if self.regla_2(socio):
             try:
-                DatosSocio.modificacion(socio)
+                self.datos.modificacion(socio)
             except:
                 return False
             else:
                 return True
         else:
-            raise
+            return False
+            #raise
 
     def regla_1(self, socio):
         """
@@ -113,7 +112,7 @@ class NegocioSocio(object):
         :raise: DniRepetido
         :return: bool
         """
-        coso = DatosSocio.buscar_dni(socio.dni)
+        coso = self.datos.buscar_dni(socio.dni)
         if coso is None:
             return True
         else:
@@ -137,7 +136,7 @@ class NegocioSocio(object):
         :raise: MaximoAlcanzado
         :return: bool
         """
-        if DatosSocio.contarSocios() < self.MAX_SOCIOS:
+        if self.datos.contarSocios() < self.MAX_SOCIOS:
             return True
         else:
             raise MaximoAlcanzado
