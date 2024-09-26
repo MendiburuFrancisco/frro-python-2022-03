@@ -19,7 +19,10 @@ def combinar_basico(nombres: List[str], precios: List[float]) -> Tuple[Any]:
 
     Restricción: Resolver utilizando un bucle for.
     """
-    pass # Completar
+    listaDeTuplas = []
+    for i in range(len(nombres)):
+        listaDeTuplas.append((nombres[i], precios[i]))
+    return tuple(listaDeTuplas)
 
 
 # NO MODIFICAR - INICIO
@@ -43,7 +46,10 @@ def combinar_enumerate(nombres: List[str], precios: List[float], ids: List[int])
     """Re-Escribir utilizando enumerate y agregando un nuevo componente.
     Referencia: https://docs.python.org/3/library/functions.html#enumerate
     """
-    pass # Completar
+    lista1 = list(enumerate(nombres))
+    lista2 = list(enumerate(precios))
+    lista3 = list(enumerate(ids))
+    return tuple([(x[1],y[1],z[1]) for x in lista1 for y in lista2 for z in lista3 if x[0] == y[0] == z[0]])
 
 
 # NO MODIFICAR - INICIO
@@ -67,7 +73,7 @@ def combinar_zip(nombres: List[str], precios: List[float], ids: List[int]) -> Tu
     """Re-Escribir utilizando zip.
     Referencia: https://docs.python.org/3/library/functions.html#zip
     """
-    pass # Completar
+    return tuple(zip(nombres, precios, ids))
 
 
 # NO MODIFICAR - INICIO
@@ -93,7 +99,7 @@ def combinar_zip_args(*args) -> Tuple[Any]:
     """Re-Escribir utilizando zip y una cantidad arbitraria de componentes.
     Referencia: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists
     """
-    pass # Completar
+    return tuple(zip(*args))
 
 
 # NO MODIFICAR - INICIO
